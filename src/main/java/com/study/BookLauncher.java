@@ -1,10 +1,7 @@
 package com.study;
 
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import com.study.persistence.BookDao;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-
-import java.util.Collections;
-import java.util.Map;
 
 public class BookLauncher {
     public static void main(String[] args){
@@ -14,10 +11,8 @@ public class BookLauncher {
         dataSource.setUsername("sa");
         dataSource.setPassword("");
 
-        NamedParameterJdbcTemplate jdbc = new NamedParameterJdbcTemplate(dataSource);
-        String sql = "SELECT COUNT(*) FROM BOOK";
-        Map<String, Object> params = Collections.emptyMap();
-        Integer count = jdbc.queryForObject(sql, params, Integer.class);
+        BookDao dao = new BookDao(dataSource);
+        int count = dao.countBooks();
         System.out.println(count);
     }
 }
