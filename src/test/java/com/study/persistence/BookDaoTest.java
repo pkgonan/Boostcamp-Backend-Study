@@ -38,4 +38,17 @@ public class BookDaoTest {
         System.out.println(selected);
         assertThat(selected.getTitle(), is("Java 웹개발"));
     }
+
+    @Test
+    public void shouldDelete(){
+        // given
+        Book book = new Book("네이버 자바", "네이버", 142);
+        Integer id = dao.insert(book);
+
+        // when
+        int affected = dao.deleteById(id);
+
+        // Then
+        assertThat(affected, is(1));
+    }
 }

@@ -20,6 +20,7 @@ public class BookDao {
     private SimpleJdbcInsert insertAction;
     private static final String COUNT_BOOK = "SELECT COUNT(*) FROM BOOK";
     private static final String SELECT_BY_ID = "SELECT id, title, author, pages FROM book where id = :id";
+    private static final String DELETE_BY_ID = "DELETE FROM BOOK WHERE id= :id";
     private RowMapper<Book> rowMapper = BeanPropertyRowMapper.newInstance(Book.class);
 
     public int countBooks(){
@@ -36,6 +37,11 @@ public class BookDao {
     public Integer insert(Book book){
         SqlParameterSource params = new BeanPropertySqlParameterSource(book);
         return insertAction.executeAndReturnKey(params).intValue();
+    }
+
+    public int deleteById(Integer id){
+        Map<String, ?> params = Collections.singletonMap("id",id);
+        return jdbc.update(DELETE_BY_ID, params);
     }
 
     public BookDao(DataSource dataSource){
