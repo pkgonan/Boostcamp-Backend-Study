@@ -6,7 +6,7 @@
 	<groupId>com.study</groupId>
 	<artifactId>boostcamp_backend_study</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>boostcamp_backend_study</name>
 	<description>Demo project for Spring Boot</description>
@@ -27,10 +27,6 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jdbc</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
@@ -49,6 +45,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
 </project>
