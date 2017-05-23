@@ -1,11 +1,13 @@
 package com.study.persistence;
 
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.util.Collections;
 import java.util.Map;
 
+@Repository
 public class BookDao {
     private NamedParameterJdbcTemplate jdbc;
     private final static String COUNT_BOOK = "SELECT COUNT(*) FROM BOOK";
