@@ -1,11 +1,11 @@
 package com.study;
 
 import com.study.persistence.BookDao;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.apache.commons.dbcp2.BasicDataSource;
 
 public class BookLauncher {
     public static void main(String[] args){
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("org.h2.Driver");
         dataSource.setUrl("jdbc:h2:~/javaweb/db;AUTO_SERVER=TRUE;DB_CLOSE_ON_EXIT=FALSE;");
         dataSource.setUsername("sa");

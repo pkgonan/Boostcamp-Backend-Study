@@ -1,8 +1,8 @@
 package com.study.persistence;
 
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+import javax.sql.DataSource;
 import java.util.Collections;
 import java.util.Map;
 
@@ -15,7 +15,7 @@ public class BookDao {
         return jdbc.queryForObject(COUNT_BOOK, params, Integer.class);
     }
 
-    public BookDao(DriverManagerDataSource dataSource){
+    public BookDao(DataSource dataSource){
         this.jdbc = new NamedParameterJdbcTemplate(dataSource);
     }
 }
