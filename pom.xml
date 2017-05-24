@@ -6,7 +6,7 @@
 	<groupId>com.study</groupId>
 	<artifactId>boostcamp_backend_study</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>boostcamp_backend_study</name>
 	<description>Demo project for Spring Boot</description>
