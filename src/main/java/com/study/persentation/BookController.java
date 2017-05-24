@@ -3,10 +3,8 @@ package com.study.persentation;
 import com.study.domain.Book;
 import com.study.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -28,5 +26,11 @@ public class BookController {
     @GetMapping("/{id}")
     Book read(@PathVariable Integer id){
         return service.findById(id);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    Book create(@RequestBody Book book){
+        return service.create(book);
     }
 }
