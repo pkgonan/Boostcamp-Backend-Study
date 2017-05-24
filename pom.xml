@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.study</groupId>
-	<artifactId>boostcamp_backend_study</artifactId>
+	<artifactId>book-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>boostcamp_backend_study</name>
+	<name>book-server</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
