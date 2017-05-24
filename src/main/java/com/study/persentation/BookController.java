@@ -33,4 +33,17 @@ public class BookController {
     Book create(@RequestBody Book book){
         return service.create(book);
     }
+
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void update(@PathVariable Integer id, @RequestBody Book book){
+        book.setId(id);
+        service.update(book);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void delete(@PathVariable Integer id){
+        service.delete(id);
+    }
 }

@@ -12,7 +12,9 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -25,6 +27,7 @@ public class BookControllerTest {
     @Autowired
     WebApplicationContext wac;
     MockMvc mvc;
+    static final String requestBody = "{\"title\":\"사피엔스\",\"author\":\"유발하라리\"}";
 
     @Before
     public void setUp() {
@@ -35,8 +38,6 @@ public class BookControllerTest {
 
     @Test
     public void shouldCreate() throws Exception{
-        String requestBody = "{\"title\":\"사피엔스\",\"author\":\"유발하라리\"}";
-
         mvc.perform(
                 post("/api/books/")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -46,5 +47,24 @@ public class BookControllerTest {
                 .andExpect(jsonPath("$.id").exists())
                 .andExpect(jsonPath("$.title").value("사피엔스"))
                 .andExpect(jsonPath("$.author").value("유발하라리"));
+    }
+
+    @Test
+    public void shouldUpdate() throws Exception{
+        mvc.perform(
+                put("/api/books/1")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody)
+        )
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void shouldDelete() throws Exception{
+        mvc.perform(
+                delete("/api/books/1")
+                .contentType(MediaType.APPLICATION_JSON)
+        )
+                .andExpect(status().isNoContent());
     }
 }
